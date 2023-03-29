@@ -7,7 +7,7 @@ title:            Power Notes
 # tagline:          ''
 description:      'Power Apps project notes'
 url:              https://github.com/gmvflow/gmvflow.github.io
-#baseurl:          '/'
+baseurl:          '/docs'
                   # the optional subpath of your site, e.g. "/blog"
                   # NB: This applies to all pages in your Jekyll site.
                   # If you want to move just the blog index pages but keep
