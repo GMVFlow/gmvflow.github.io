@@ -28,12 +28,12 @@ All the data for this system is stored in Dataverse, which serves as the central
 <section id="data-model"><h2>The Data Model</h2></section>
 
 [Incident Management System](https://drawsql.app/teams/gmvflow/diagrams/contoso-estates)
-![Schema](/images/data-model.png)
+![Schema](/docs/images/data-model.png)
 
 <br>
 In Dataverse, this translates as:
 
-![Dataverse Tables](/images/dataverse-tables.png)
+![Dataverse Tables](/docs/images/dataverse-tables.png)
 
 All tables, with the exception of `Users`, are custom tables. `Users` is a default table added to the environment upon creating a User lookup.
 
@@ -46,12 +46,12 @@ Where values are constant, e.g. `priorities`, `types`, etc., I have created `Cho
 
 Starting off with the simple data types in the `Incident` table highlighted in yellow below. (Columns highlighted in grey do not feature in the Incident Report Form.)
 
-![Simple columns](/images/simple-columns.png)
+![Simple columns](/docs/images/simple-columns.png)
 
 <br>
 In the form UI, laid out as follows:
 
-![Simple ui](/images/simple-ui.png)
+![Simple ui](/docs/images/simple-ui.png)
 
 1. Date picker `dteDateOfIncident`
 2. Text input `txtLocation` and `txtActionTaken`
@@ -77,13 +77,13 @@ Patch(
 
 The `Reported By` column is a lookup column which connects to the default `Users` table. 
 
-![User Lookup](/images/user-lookup.png)
-![Reported by details](/images/reported-by-lookup.png){: width="300" }
+![User Lookup](/docs/images/user-lookup.png)
+![Reported by details](/docs/images/reported-by-lookup.png){: width="300" }
 
 <br>
 This field is prepopulated with its value set to the current user, so a simple Text Input can be used to display the value and the `DisplayMode` set to `Disabled`.
 
-![Reported By](/images/reported-by.png)
+![Reported By](/docs/images/reported-by.png)
 
 ```
 // Default propery
@@ -132,17 +132,17 @@ Patch(
 
 To handle file attachments in Dataverse, I created a separate table `Supporting Files` with a File-type column and a Lookup-type column which links to the main table, i.e. `Incidents`.
 
-![Supporting Files table](/images/supporting-files.png)
+![Supporting Files table](/docs/images/supporting-files.png)
 
 All files are stored in the `FileAttachment` entity. When creating a File-type column, the column automatically links to the `FileAttachment` entity creating a Many-to-one relationship.
 
-![FileAttachment](/images/fileattachment-entity.png)
+![FileAttachment](/docs/images/fileattachment-entity.png)
 
 <br>
 #### The Attachments control
 The `Attachments` control is not readily available from the UI components list and has to be cut or copied from inside a `Form` control.
 
-![Form control](/images/form-control.png)
+![Form control](/docs/images/form-control.png)
 
 <br>
 A File-type column in Dataverse requires an object with 2 keys: 
@@ -172,7 +172,7 @@ ForAll(
 <br>
 The image below shows 2 attachment records created in the same form submission. 
 
-![Attachment record](/images/attachment.png)
+![Attachment record](/docs/images/attachment.png)
 
 <br>
 `Incident Lookup` is a lookup column which links to the `Incidents` table in a Many-to-one relationship. This column expects the last patched record (similar to `lastSubmit` when using a `Form` control) in the `Incidents` table. 
